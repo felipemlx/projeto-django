@@ -1,4 +1,4 @@
-# projeto-django
+# Riffs&Histórias
 Projeto feito como estudo do framework Django para Python e AWS como banco de dados.
 O projeto consiste em uma plataforma para que pessoas possam cadastrar fotos e informações de instrumentos famosos no cenário do rock.
 Para cadastrar o instrumento, o usuário precisa criar uma conta com login e senha. O usuário também pode excluir ou editar os instrumentos que inseriu.
