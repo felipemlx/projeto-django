@@ -1,0 +1,50 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="conteudo">
+                <section class="banner">
+                    <img class="banner__imagem" src="{% static 'assets/imagens/background.jpg' %}"  alt="banner RiffsEHistorias">
+                    <h1 class="banner__titulo"> A galeria dos instrumentos mais famosos do rock!</h1>
+                </section>
+                <section class="tags">
+                    <p class="tags__titulo">Busque por tags:</p>
+                    <ul class="tags__lista">
+                        <li class="tags__tag"><a href="{% url 'filtro' 'GUITARRA' %}" class="btn" style="color: #C9C9C9;">Guitarras</a></li>
+                        <li class="tags__tag"><a href="{% url 'filtro' 'BAIXO' %}" class="btn" style="color: #C9C9C9;">Baixos</a></li>
+                    </ul>
+                </section>
+                <section class="galeria">
+                    <div class="cards">
+                        <h2 class="cards__titulo">Navegue pelos instrumentos</h2>
+                        <ul class="cards__lista">
+                            {% if cards %}
+                            {% for fotografia in cards %}
+                            <li class="card">
+                                <a href="{% url 'imagem' fotografia.id %}">
+                                {% if fotografia.foto == '' or fotografia.foto == null  %}
+                                    <img class="card__imagem" src="{% static 'assets/imagens/galeria/not_found.jpg' %}" alt="foto">
+                                {% else %}
+                                    <img class="card__imagem" src="{{fotografia.foto.url}}" alt="foto">
+                                {% endif %}
+                                </a>
+                                
+                                <div class="card__info">
+                                    <p class="card__titulo">{{fotografia.nome}}</p>
+                                    <div class="card__texto">
+                                        <p class="card__descricao">{{fotografia.legenda}}</p>
+                                        <span>
+                                            <img src="{% static 'assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            {% else %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}
